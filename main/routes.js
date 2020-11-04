@@ -5,8 +5,18 @@ export default (components = {}) => [
     component: components.PHome
   },
   {
-    path: '/about',
+    path: '/create',
     exact: true,
-    component: components.PAbout
-  }
+    component: components.PCreate
+  },
+  {
+    path: '/edit/:id',
+    exact: true,
+    component: components.PEdit
+  },
+  {
+    path: '/pokemons/:id',
+    exact: true,
+    component: components.PInfo
+  },
 ]
