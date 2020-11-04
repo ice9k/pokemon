@@ -1,5 +1,5 @@
 {
-  "name": "myapp",
+  "name": "pokemons",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -12,40 +12,41 @@
     "web": "startupjs web",
     "server": "startupjs server",
     "precommit": "lint-staged",
-    "postinstall": "startupjs patch-package",
+    "postinstall": "startupjs patch-package && startupjs fonts",
     "adb": "adb reverse tcp:8081 tcp:8081 && adb reverse tcp:3000 tcp:3000 && adb reverse tcp:3010 tcp:3010",
     "log-android-color": "react-native log-android | ccze -m ansi -C -o nolookups",
     "log-android": "hash ccze 2>/dev/null && npm run log-android-color || (echo \"WARNING! Falling back to plain logging. For colored logs install ccze - brew install ccze\" && react-native log-android)",
     "android-release": "react-native run-android --variant Release",
     "ios-release": "react-native run-ios --configuration Release",
     "build": "startupjs build --async",
-    "start-production": "startupjs start-production"
+    "start-production": "startupjs start-production",
+    "fonts": "startupjs fonts"
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^5.12.0",
-    "@startupjs/ui": "^0.24.1",
-    "axios": "^0.20.0",
+    "@startupjs/ui": "^0.26.2",
+    "axios": "^0.21.0",
     "nconf": "^0.10.0",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "react-native": "0.63.3",
     "react-native-collapsible": "1.5.2",
     "react-native-svg": "^12.1.0",
-    "react-native-web": "^0.12.0",
-    "startupjs": "^0.24.4"
+    "startupjs": "^0.26.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "babel-jest": "^25.1.0",
     "eslint": "^6.5.1",
-    "eslint-config-standard": "^14.1.1",
+    "eslint-config-standard": "^15.0.0",
     "eslint-config-standard-react": "^9.2.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.21.4",
+    "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-pug": "^0.8.4",
-    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.2",
+    "husky": "^4.3.0",
     "jest": "^25.1.0",
     "lint-staged": "^10.4.2",
     "react-test-renderer": "16.13.1"
@@ -58,6 +59,11 @@
       "eslint --fix",
       "git add"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "sideEffects": []
 }

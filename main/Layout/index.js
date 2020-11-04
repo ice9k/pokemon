@@ -32,15 +32,6 @@ export default observer(function ({ children }) {
 
   return pug`
     Layout
-      SmartSidebar(
-        backgroundColor='#eeeeee'
-        path=$opened.path()
-        renderContent=renderSidebar
-      )
-        Row.menu
-          Button(color='secondaryText' icon=faBars onPress=() => $opened.set(!opened))
-          H1.logo= APP_NAME
-
-        Div.body= children
+      Div.body= children
   `
 })
